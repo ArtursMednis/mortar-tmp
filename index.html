@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .fieldSet {
+      margin: 20px;
+      padding: 10px;
+      display: inline-block;
+      border: 3px solid black;
+    }
+    .addBtn {
+      vertical-align: top;
+    }
+    label {
+      min-width: 110px;
+      display: inline-block;
+    }
+  </style>
+
+  <!-- <script type="module" src="./tsOutput/mortarCalcFunctions.js"></script> -->
+  
+
+</head>
+<body>
+  <div style="display: none;">
+  <!-- <div id="fieldSetFU" class="fieldSet">
+    <p id="fuComment" style="max-width: 200px;">Firing unit position</p>
+    <label for="FU_East_1"> FU (East) </label>     <input id="FU_East_1" name="FU_East_1" type="number" value="0"/>
+    <br/>
+    <label for="FU_North_1"> FU (North) </label>     <input id="FU_North_1" name="FU_North_1" type="number" value="0"/>
+  </div> -->
+
+  
+  <!-- <button type="button" onclick="addMortar()">Add mortar</button> -->
+  <div id="mortars" style="display: inline-block;">
+    <button type="button" onclick="addMortar()">Add mortar</button>
+  </div>
+
+  <div id="targets" style="display: inline-block;">
+    <button type="button" onclick="addTarget()">Add target</button>
+  </div>
+
+  <div id="frontObserver" style="display: inline-block;"></div>
+
+  <div>
+    <h3>Linear/field target settings</h3>
+    <label for="linTGLen"> Target length </label>     <input id="linTGLen" name="linTGLen" type="number" value="200"/>
+    <br/>
+    <label for="linTGWidth"> Target width </label>     <input id="linTGWidth" name="linTGWidth" type="number" value="200"/>
+    <br/>
+    <label for="linTGAtt"> Target attitude </label>     <input id="linTGAtt" name="linTGAtt" type="number" value="0"/>
+    <br/>
+    <label for="linTGSubTGCount"> Target Points per length </label>     <input id="linTGSubTGCount" name="linTGSubTGCount" type="number" value="4"/>
+    <label for="widthTGSubTGCount"> Target Points per width </label>     <input id="widthTGSubTGCount" name="widthTGSubTGCount" type="number" value="4"/>
+    <br/>
+    <button onclick="createLinearTarget()">Create linear target</button>
+    <button onclick="createFieldTarget()">Create field target</button>
+    <button onclick="changeTargetOrderForFU()">reverse targets order for FU</button>
+    <button onclick="offSetAllCorrections()">Apply correction to each target</button>
+    <br/>
+
+  </div>
+
+  <!-- <div id="fieldSetTG" class="fieldSet">
+    <p id="tgComment" style="max-width: 200px;">Target position</p>
+    <label for="TG_East_1"> TG (East) </label>     <input id="TG_East_1" name="TG_East_1" type="number" value="0"/>
+    <br/>
+    <label for="TG_North_1"> TG (North) </label>     <input id="TG_North_1" name="TG_North_1" type="number" value="0"/>
+  </div> -->
+
+  <button type="button" onclick="calcAllFiringData()">Calc</button>
+
+  <div id="fieldSetOutput" class="fieldSet" style="min-height: 50px; min-width: 200px;">
+    <p id="outputComment" style="max-width: 200px;">calculation output</p>
+    <p id="FU_Distance_1"></p>
+    <p id="FU_Direction_1"></p>
+    <p id="alphaDeg"></p>
+    <h3 id="log" style="max-width: 200px; background-color: chartreuse;"></h3>
+  </div>
+
+  <button onclick="creataMap()">Create map</button>
+  <br/>
+  <svg id="mapSvg" height="1200" width="1200">
+  </svg>
+
+</div>
+
+
+  <script src="./wpOutput/main.js"></script>
+</body>
+</html>
