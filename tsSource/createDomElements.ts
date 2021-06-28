@@ -1,7 +1,7 @@
 import {iMortar_, iTarget_, iLocationInput_old_mixed, iGeoLocationElement_old_mixed} from "./basicTypes";
 import { offSetShiftGrid, offSetShiftPolar } from "./mortarCalcFunctions";
 import { mil2rad, rad2mil } from "./coordTransformFunctions";
-
+import {ObjectInMap} from "./ObjectInMap";
 
 
 class NumericInputField{
@@ -104,7 +104,7 @@ class RadioInputField{
 
 
 
-class Location implements iLocationInput_old_mixed{  
+class Location_old_mixed implements iLocationInput_old_mixed{  
   private _htmlElem:HTMLElement = document.createElement("div");
   private eastInputElem: NumericInputField = new NumericInputField("East");
   private northInputElem: NumericInputField = new NumericInputField("North");
@@ -154,7 +154,7 @@ abstract class GeoLocationElement implements iGeoLocationElement_old_mixed{
   constructor(prevLoc?:iGeoLocationElement_old_mixed,ObjectType?:string){
     this.No = (prevLoc) ? prevLoc.No+1 : 1;
     this._htmlElem.className = "fieldSet";
-    this.location = (prevLoc) ? new Location(prevLoc.location) : new Location();
+    this.location = (prevLoc) ? new Location_old_mixed(prevLoc.location) : new Location_old_mixed();
     this.DisplayTitle = ((ObjectType) ? ObjectType : "Obj") + "_" + this.No.toString();
     this.creteHeaderWithLocationElements();
   }
@@ -247,7 +247,7 @@ export class Target extends GeoLocationElement implements iTarget_ {
 
   constructor(prevTarget?:iTarget_){
     super(prevTarget,"Target");
-      this.shiftedLocation = new Location(this.location);
+      this.shiftedLocation = new Location_old_mixed(this.location);
       this.shiftedLocation.disabled = true;
 
     this._htmlElem.appendChild(document.createElement("br"));
