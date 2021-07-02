@@ -1,4 +1,4 @@
-import { mortarTargetBipartiteGraph, Mortar_old_mixed, Target, FO, iMortarTargetBipartiteGraph} from "./createDomElements";
+import { mortarTargetBipartiteGraph, Mortar_old_mixed, Target_old_mixed, FO, iMortarTargetBipartiteGraph} from "./createDomElements";
 import { Map } from "./createMap";
 import { iMortar_, iTarget_, iGeoLocationElement_old_mixed } from "./basicTypes";
 import { calcMortarFireDataGrid, calcMortarFireDataPolar, calcMortarFireDataShiftGrid, calcMortarFireDataShiftPolar } from "./mortarCalcFunctions";
@@ -129,7 +129,7 @@ class FireMission{
     if(this.targets.length != 0){
       previousTarget = this.targets[this.targets.length-1];
     }
-    var target = new Target(previousTarget);
+    var target = new Target_old_mixed(previousTarget);
     target.MTRelationShipInput.MTRelationships = this.mortarTargetRelationShip;
     this.targets.push(target);
     if(this.mortars.length != 0){
@@ -224,7 +224,7 @@ class FireMission{
   
     for(var i=0; i<subTargetCount; i++){
       //@ts-ignore
-      var newTarget:iTarget_ = new Target();
+      var newTarget:iTarget_ = new Target_old_mixed();
       var positionOnTargetLine = (-targetLength/2+distanceBetweenTargets/2+i*distanceBetweenTargets);
       newTarget.location.east = baseTargetEast + attSin*positionOnTargetLine;
       newTarget.location.north = baseTargetNorth + attCos*positionOnTargetLine;
@@ -293,7 +293,7 @@ class FireMission{
         var positionOnTargetWidthLine = (-targetWidth/2+lateralDistanceBetweenTargets/2+k*lateralDistanceBetweenTargets);
   
         //@ts-ignore
-        var newTarget:iTarget_ = new Target();
+        var newTarget:iTarget_ = new Target_old_mixed();
         
         newTarget.location.east = baseTargetEast + attSin*positionOnTargetLine + attCosLat*positionOnTargetWidthLine;
         newTarget.location.north = baseTargetNorth + attCos*positionOnTargetLine + attSinLat*positionOnTargetWidthLine;

@@ -1,7 +1,7 @@
 import {iMortar_, iTarget_, iLocationInput_old_mixed, iGeoLocationElement_old_mixed} from "./basicTypes";
 import { offSetShiftGrid, offSetShiftPolar } from "./mortarCalcFunctions";
 import { mil2rad, rad2mil } from "./coordTransformFunctions";
-import {ObjectInMap} from "./ObjectInMap";
+//import {ObjectInMap} from "./ObjectInMap";
 
 
 class NumericInputField{
@@ -222,7 +222,7 @@ export class Mortar_old_mixed extends GeoLocationElement implements iMortar_{
   //
 }
 
-export class Target extends GeoLocationElement implements iTarget_ {
+export class Target_old_mixed extends GeoLocationElement implements iTarget_ {
 
   updateRelationShips(){
     this.MTRelationShipInput.updateRelationShips();
