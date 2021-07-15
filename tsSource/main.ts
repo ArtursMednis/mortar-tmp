@@ -7,7 +7,7 @@ import { mil2rad } from "./coordTransformFunctions";
 
 
 
-class FireMission{
+class FireMission_old_mixed{
   mortars: iMortar_[] = [];
   targets: iTarget_[] = [];
   frontObserver: iGeoLocationElement_old_mixed = new FO();
@@ -363,7 +363,7 @@ class FireMission{
       // iGeoLocationElement šeit implementēt observable modeli
 }
 
-var currentMission = new FireMission();
+var currentMission = new FireMission_old_mixed();
 document.body.appendChild(currentMission.htmlElem);
 
 
