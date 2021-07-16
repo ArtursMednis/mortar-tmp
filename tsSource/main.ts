@@ -1,4 +1,4 @@
-import { mortarTargetBipartiteGraph, Mortar_old_mixed, Target_old_mixed, FO, iMortarTargetBipartiteGraph} from "./createDomElements";
+import { mortarTargetBipartiteGraph_old_mixed, Mortar_old_mixed, Target_old_mixed, FO, iMortarTargetBipartiteGraph} from "./createDomElements";
 import { Map } from "./createMap";
 import { iMortar_, iTarget_, iGeoLocationElement_old_mixed } from "./basicTypes";
 import { calcMortarFireDataGrid, calcMortarFireDataPolar, calcMortarFireDataShiftGrid, calcMortarFireDataShiftPolar } from "./mortarCalcFunctions";
@@ -12,7 +12,7 @@ class FireMission_old_mixed{
   targets: iTarget_[] = [];
   frontObserver: iGeoLocationElement_old_mixed = new FO();
   
-  mortarTargetRelationShip:iMortarTargetBipartiteGraph = new mortarTargetBipartiteGraph();
+  mortarTargetRelationShip:iMortarTargetBipartiteGraph = new mortarTargetBipartiteGraph_old_mixed();
 
 
 

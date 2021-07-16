@@ -419,7 +419,7 @@ class MTRelationShipInput {
   private _htmlElem:HTMLElement = document.createElement("div");
   private pairedUnitsElement = document.createElement("ul");
   private MTObject:iMortar_|iTarget_;
-  MTRelationships:mortarTargetBipartiteGraph|null = null;
+  MTRelationships:mortarTargetBipartiteGraph_old_mixed|null = null;
 
   constructor(MTObject:iMortar_|iTarget_){
     this._htmlElem.className = "MTRelationsInputSet";
@@ -501,7 +501,7 @@ class MTRelationShipInput {
 
 
 
-export class mortarTargetBipartiteGraph implements iMortarTargetBipartiteGraph{
+export class mortarTargetBipartiteGraph_old_mixed implements iMortarTargetBipartiteGraph{
   edges: tMortarTargetPair_[] = [];
   mortars: iMortar_[]|null = null;
   targets: iTarget_[]|null = null;
