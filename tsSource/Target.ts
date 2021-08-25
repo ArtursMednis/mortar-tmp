@@ -2,7 +2,7 @@ import {ObjectInMap} from "./ObjectInMap";
 import { mil2rad, rad2mil } from "./coordTransformFunctions";
 
 export class Target extends ObjectInMap {
-  pairedUnitsElement: HTMLUListElement = document.createElement("ul");
+  //pairedUnitsElement: HTMLUListElement = document.createElement("ul");
 
   shiftedLocation:ObjectInMap;
 
