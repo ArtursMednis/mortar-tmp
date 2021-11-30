@@ -1,10 +1,11 @@
-import {ObjectInMap} from "./ObjectInMap";
-import { mil2rad, rad2mil } from "./coordTransformFunctions";
+import { ObjectInMap } from "./ObjectInMap";
+import { tPointGrid, tPolarPointer, tShiftGrid } from "./basicTypes";
+import { mil2rad, rad2mil, shiftPoint } from "./coordTransformFunctions";
 
 export class Target extends ObjectInMap {
   //pairedUnitsElement: HTMLUListElement = document.createElement("ul");
 
-  shiftedLocation:ObjectInMap;
+  //shiftedLocation:ObjectInMap;
 
   public shiftedFODistance: number = 0;
   public shiftedOTLineMil: number = 0;
@@ -12,16 +13,17 @@ export class Target extends ObjectInMap {
 
   public OTLineMil: number = 0;
   public FODistance: number = 0;
+  AppliedCorrections: TargetCorrection[] = [];
 
-  public AddCorrection: number = 0;
-  public DropCorrection: number = 0;
-  public LeftCorrection: number = 0;
-  public RightCorrection: number = 0;
+  //public AddCorrection: number = 0;
+  //public DropCorrection: number = 0;
+  //public LeftCorrection: number = 0;
+  //public RightCorrection: number = 0;
   frontObserver? : ObjectInMap;
 
   constructor(prevTarget?:Target){
-    super(prevTarget,"Target");
-      this.shiftedLocation = new ObjectInMap(this);
+      super("Target", prevTarget);
+      //this.shiftedLocation = new ObjectInMap(this);
   }
 
 
@@ -59,14 +61,78 @@ export class Target extends ObjectInMap {
       
     //   offSetShiftPolar(this,this.frontObserver!);
     // }
-  }
+    }
+
+    AddCorrection(correction: TargetCorrection) {
+        correction.baseLocation = this.PointGrid;
+        this.ApplyShiftGridCorrection(correction);
+        this.AppliedCorrections.push(correction);
+    }
+
+    ApplyShiftGridCorrection(correction: TargetCorrection) {
+
+        var shiftData: tShiftGrid = { right: correction.right, add: correction.add };   //ðo vajadzçtu risinât ar interfeisiem vai arî zem correction
+        var shiftedTarget = shiftPoint(this.PointGrid, shiftData, mil2rad(correction.ot));
+
+        this.PointGrid = shiftedTarget;
+
+
+        
+    }
 
 
 
 
 
 
+}
+
+export class TargetCorrection {
+
+    public constructor(init?: Partial<TargetCorrection>) {
+        Object.assign(this, init);
+    }
+
+    _add: number = 0;
+    _right: number = 0;
+    _ot: number = 0;
+
+    set add(val: number) {
+        this._add = val;
+    }
+    get add() {
+        return this._add;
+    }
+
+    set drop(val: number) {
+        this._add = -val;
+    }
+    get drop() {
+        return -this._add;
+    }
 
 
+    set right(val: number) {
+        this._right = val;
+    }
+    get right() {
+        return this._right;
+    }
+
+    set left(val: number) {
+        this._right = -val;
+    }
+    get left() {
+        return -this._right;
+    }
+
+    set ot(val: number) {
+        this._ot = val;
+    }
+    get ot() {
+        return this._ot;
+    }
+
+    public baseLocation: tPointGrid = { east: 0, north: 0 };
 
 }

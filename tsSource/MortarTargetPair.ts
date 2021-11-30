@@ -34,11 +34,14 @@ export class MortarTargetPair {
 
 
     calcMortarFireDataGrid():tPolarPointer {
-        var mortarPosition: tPointGrid = { east: this.mortar.east, north: this.mortar.north };
-        var targetPosition: tPointGrid = { east: this.target.east, north: this.target.north };
+        //var mortarPosition: tPointGrid = { east: this.mortar.east, north: this.mortar.north };
+        //var targetPosition: tPointGrid = { east: this.target.east, north: this.target.north };
 
-        var mortarFireData = getPoint1ToPoint2InPolar(mortarPosition, targetPosition);      //ðî metode jâpârveido, lai pieòem bâzes klasi ObjectInMap nevis tikai savu speciâlo klasi tPointGrid, kas pçc bûtîbas ir tas pats
+        //var mortarFireData = getPoint1ToPoint2InPolar(mortarPosition, targetPosition);      //ðî metode jâpârveido, lai pieòem bâzes klasi ObjectInMap nevis tikai savu speciâlo klasi tPointGrid, kas pçc bûtîbas ir tas pats
+        //                                                                                    // tPointGrid jâuztaisa kâ interfeiss
+        //                                                                                    // Nç! ObjectInMap, jâizveido get;set; tPointGrid 
 
+        var mortarFireData = getPoint1ToPoint2InPolar(this.mortar.PointGrid, this.target.PointGrid);
         return mortarFireData;
     }
 

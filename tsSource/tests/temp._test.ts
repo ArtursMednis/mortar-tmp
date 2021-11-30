@@ -1,6 +1,6 @@
  import * as codeUnderTest from "../coordTransformFunctions"
  import { tPointGrid, tPolarPointer } from "../basicTypes"
-
+/*
  //npm i @types/jest
  test("mortar test 1",()=>{
 
@@ -31,3 +31,7 @@ describe('is working', () => {
         expect(true).toBeTruthy();
     })
 })
+
+
+
+//*/
